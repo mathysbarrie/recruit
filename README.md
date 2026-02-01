@@ -2,6 +2,12 @@
 
 Un formulaire de qualification professionnel et moderne pour le recrutement de téléprospecteurs dans le secteur des énergies renouvelables.
 
+## Démo en ligne
+
+Le formulaire est déployé et accessible en ligne :
+- **URL principale :** https://formulaire-qualification-recrutemen.vercel.app
+- **URL alternative :** https://formulaire-qualification-recrutement-3qwgpgafx.vercel.app
+
 ## Aperçu
 
 Ce formulaire permet d'évaluer de manière complète les candidats potentiels pour des postes de téléprospection dans le domaine des énergies renouvelables (panneaux solaires, pompes à chaleur, isolation, etc.).
@@ -94,11 +100,21 @@ fetch('/api/candidatures', {
 
 ### Hébergement
 
-Vous pouvez héberger ce formulaire sur :
+**Ce formulaire est déjà déployé sur Vercel** et accessible via les URLs ci-dessus.
+
+Si vous souhaitez le déployer ailleurs, vous pouvez utiliser :
 - GitHub Pages (gratuit)
 - Netlify (gratuit)
-- Vercel (gratuit)
 - Votre propre serveur web
+
+#### Déploiement sur Vercel (déjà fait)
+
+Le projet est configuré avec `vercel.json` et connecté au repository GitHub. Tout push sur `main` déclenche un redéploiement automatique.
+
+Pour redéployer manuellement :
+```bash
+vercel --prod
+```
 
 #### Déploiement sur GitHub Pages
 
