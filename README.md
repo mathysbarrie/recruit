@@ -1,149 +1,145 @@
 # Formulaire de Qualification - Téléprospecteur Énergies Renouvelables
 
-Un formulaire de qualification professionnel et moderne pour le recrutement de téléprospecteurs dans le secteur des énergies renouvelables.
-
-## Démo en ligne
-
-Le formulaire est déployé et accessible en ligne :
-- **URL principale :** https://formulaire-qualification-recrutemen.vercel.app
-- **URL alternative :** https://formulaire-qualification-recrutement-3qwgpgafx.vercel.app
-
-## Aperçu
-
-Ce formulaire permet d'évaluer de manière complète les candidats potentiels pour des postes de téléprospection dans le domaine des énergies renouvelables (panneaux solaires, pompes à chaleur, isolation, etc.).
+Application Next.js moderne avec back office pour le recrutement de téléprospecteurs dans le secteur des énergies renouvelables.
 
 ## Fonctionnalités
 
-- **Design moderne et responsive** - Interface élégante avec dégradés verts thématiques
-- **7 sections de qualification** :
-  - Informations personnelles
-  - Expérience professionnelle en téléprospection
-  - Connaissances des énergies renouvelables
-  - Compétences et soft skills
-  - Disponibilité et modalités de travail
-  - Motivation et projet professionnel
-  - Informations complémentaires
+### Formulaire de candidature
+- Interface moderne avec shadcn/ui et Tailwind CSS
+- Validation de formulaire avec Zod et React Hook Form
+- 7 sections de qualification complètes
+- Design responsive et optimisé mobile
+- Animations et transitions fluides
 
-- **Validation HTML5** - Champs obligatoires avec validation native
-- **Auto-évaluation interactive** - Échelles de notation pour les compétences
-- **Conforme RGPD** - Acceptation des conditions de traitement des données
-- **Compatible mobile** - Design adaptatif pour tous les écrans
+### Back Office Admin
+- Dashboard avec statistiques en temps réel
+- Gestion complète des candidatures
+- Système de filtrage par statut
+- Vue détaillée par onglets (Informations, Expérience, Compétences, Gestion)
+- Mise à jour du statut et ajout de notes
+- Interface intuitive avec shadcn/ui
 
-## Sections du formulaire
+## Technologies
 
-### 1. Informations Personnelles
-- Nom, prénom
-- Email, téléphone
-- Ville, code postal
+- **Next.js 16** (App Router)
+- **TypeScript**
+- **Tailwind CSS 4** avec shadcn/ui
+- **Prisma** (ORM)
+- **SQLite** (Base de données)
+- **React Hook Form** + **Zod** (Validation)
+- **date-fns** (Formatage des dates)
 
-### 2. Expérience Professionnelle
-- Expérience en téléprospection
-- Années d'expérience
-- Secteurs d'activité
-- Volume d'appels quotidien
+## Structure du projet
 
-### 3. Connaissances Énergies Renouvelables
-- Niveau de connaissance du secteur
-- Solutions connues (photovoltaïque, pompes à chaleur, etc.)
-- Connaissance des aides et subventions (MaPrimeRénov', CEE)
+```
+recruit/
+├── app/
+│   ├── page.tsx              # Formulaire de candidature
+│   ├── admin/
+│   │   └── page.tsx          # Back office admin
+│   ├── api/
+│   │   └── candidatures/     # API routes
+│   └── globals.css           # Styles globaux
+├── components/
+│   └── ui/                   # Composants shadcn/ui
+├── lib/
+│   ├── prisma.ts             # Client Prisma
+│   └── utils.ts              # Utilitaires
+├── prisma/
+│   ├── schema.prisma         # Schéma de base de données
+│   └── migrations/           # Migrations
+└── package.json
+```
 
-### 4. Compétences et Soft Skills
-- Auto-évaluation (communication, gestion des objections, persévérance)
-- Maîtrise des logiciels CRM
+## Installation
 
-### 5. Disponibilité et Modalités
-- Disponibilité de début
-- Type de contrat souhaité (CDI, CDD, freelance)
-- Préférence de travail (présentiel, télétravail, hybride)
-- Horaires et prétentions salariales
-
-### 6. Motivation
-- Motivations pour le poste
-- Objectifs professionnels
-- CV en ligne
-
-### 7. Informations Complémentaires
-- Source de découverte de l'agence
-- Commentaires libres
-- Consentement RGPD
-
-## Utilisation
-
-### Ouverture simple
 ```bash
-open formulaire-qualification.html
+# Cloner le repository
+git clone https://github.com/mathysbarrie/recruit.git
+cd recruit
+
+# Installer les dépendances
+npm install
+
+# Générer le client Prisma
+npx prisma generate
+
+# Créer la base de données
+npx prisma migrate dev
+
+# Lancer le serveur de développement
+npm run dev
 ```
 
-Ou double-cliquez sur le fichier `formulaire-qualification.html` dans votre explorateur de fichiers.
+L'application sera accessible sur [http://localhost:3000](http://localhost:3000)
 
-### Intégration Backend
+## URLs
 
-Le formulaire collecte les données en JavaScript. Pour l'intégrer à votre système :
+- **Formulaire public** : `/`
+- **Back office admin** : `/admin`
 
-1. Localisez la section `<script>` en fin de fichier (ligne ~690)
-2. Modifiez la fonction de soumission pour envoyer les données vers votre API :
+## Base de données
 
-```javascript
-fetch('/api/candidatures', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(result => {
-    alert('✅ Candidature envoyée avec succès !');
-})
-.catch(error => {
-    console.error('Erreur:', error);
-});
-```
+Le projet utilise SQLite par défaut. Le modèle de données comprend :
 
-### Hébergement
+### Candidature
+- Informations personnelles (nom, prénom, email, téléphone, ville)
+- Expérience professionnelle (années d'expérience, secteurs, volume d'appels)
+- Connaissances énergies renouvelables (niveau, solutions, aides)
+- Compétences (communication, gestion objections, persévérance)
+- Disponibilité et modalités (contrat, lieu, horaires, salaire)
+- Motivation et objectifs
+- Statut de traitement (new, reviewed, shortlisted, rejected)
+- Notes internes pour l'admin
 
-**Ce formulaire est déjà déployé sur Vercel** et accessible via les URLs ci-dessus.
+### Admin
+- Gestion des comptes administrateurs (à venir)
 
-Si vous souhaitez le déployer ailleurs, vous pouvez utiliser :
-- GitHub Pages (gratuit)
-- Netlify (gratuit)
-- Votre propre serveur web
+## Déploiement sur Vercel
 
-#### Déploiement sur Vercel (déjà fait)
+L'application est configurée pour un déploiement automatique sur Vercel :
 
-Le projet est configuré avec `vercel.json` et connecté au repository GitHub. Tout push sur `main` déclenche un redéploiement automatique.
-
-Pour redéployer manuellement :
 ```bash
 vercel --prod
 ```
 
-#### Déploiement sur GitHub Pages
+Pour la production, pensez à :
+1. Configurer une base de données PostgreSQL ou MySQL
+2. Ajouter les variables d'environnement dans Vercel
+3. Mettre en place l'authentification pour le back office
 
-1. Activez GitHub Pages dans les paramètres du repository
-2. Sélectionnez la branche `main` comme source
-3. Votre formulaire sera accessible à : `https://votre-username.github.io/recruit/formulaire-qualification.html`
+## Scripts disponibles
 
-## Personnalisation
+```bash
+npm run dev      # Lancer en développement
+npm run build    # Build pour production
+npm run start    # Lancer en production
+npm run lint     # Vérifier le code
+```
 
-### Couleurs
-Les couleurs principales sont définies dans le CSS :
-- Vert principal : `#27ae60`
-- Vert secondaire : `#2ecc71`
-- Violet d'accentuation : `#667eea` et `#764ba2`
+## Variables d'environnement
 
-### Champs
-Vous pouvez facilement ajouter, modifier ou supprimer des champs en éditant la structure HTML.
+Créez un fichier `.env` à la racine :
 
-## Technologies utilisées
+```env
+DATABASE_URL="file:./dev.db"
+```
 
-- HTML5
-- CSS3 (Flexbox, Grid)
-- JavaScript vanilla (aucune dépendance)
+Pour la production, utilisez une base de données hébergée :
 
-## Compatibilité
+```env
+DATABASE_URL="postgresql://user:password@host:port/database"
+```
 
-- Chrome, Firefox, Safari, Edge (versions récentes)
-- Mobile iOS et Android
-- Tablettes
+## Améliorations futures
+
+- [ ] Authentification pour le back office admin
+- [ ] Export des candidatures en CSV/Excel
+- [ ] Envoi d'emails automatiques aux candidats
+- [ ] Système de notifications
+- [ ] Filtres avancés et recherche
+- [ ] Graphiques et analytics
+- [ ] Tests unitaires et E2E
 
 ## Support
 
@@ -155,4 +151,4 @@ Ce projet est libre d'utilisation pour votre agence de recrutement.
 
 ---
 
-**Fait avec ❤️ pour optimiser votre recrutement dans les énergies renouvelables**
+**Développé avec Next.js 16 et shadcn/ui**

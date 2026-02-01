@@ -13,3 +13,24 @@ Thumbs.db
 
 # Dependencies
 node_modules/
+
+# Next.js
+.next/
+out/
+build/
+
+# Vercel
+.vercel
+
+# Database
+dev.db
+dev.db-journal
+/generated/prisma
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Old files
+old/
