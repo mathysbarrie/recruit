@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Qualification - Téléprospecteur Énergies Renouvelables</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .form-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #27ae60;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: "●";
+            color: #27ae60;
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #e74c3c;
+            margin-left: 4px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #27ae60;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-option:hover,
+        .checkbox-option:hover {
+            background-color: #f8f9fa;
+            border-color: #27ae60;
+        }
+
+        .radio-option input[type="radio"],
+        .checkbox-option input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .submit-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .form-content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+        }
+
+        .scale-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .scale-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .scale-option input[type="radio"] {
+            display: block;
+            margin: 0 auto 5px;
+        }
+
+        .scale-option label {
+            font-size: 12px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Formulaire de Qualification</h1>
+            <p>Téléprospecteur - Énergies Renouvelables</p>
+        </div>
+
+        <div class="form-content">
+            <div class="info-box">
+                📋 Ce formulaire nous permettra d'évaluer votre profil pour un poste de téléprospecteur dans le secteur des énergies renouvelables. Merci de remplir tous les champs obligatoires.
+            </div>
+
+            <form id="qualificationForm">
+                <!-- Section 1: Informations Personnelles -->
+                <div class="section">
+                    <h2 class="section-title">Informations Personnelles</h2>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="nom">Nom <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom <span class="required">*</span></label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone <span class="required">*</span></label>
+                            <input type="tel" id="telephone" name="telephone" required>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="ville">Ville <span class="required">*</span></label>
+                            <input type="text" id="ville" name="ville" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="codePostal">Code Postal <span class="required">*</span></label>
+                            <input type="text" id="codePostal" name="codePostal" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Expérience Professionnelle -->
+                <div class="section">
+                    <h2 class="section-title">Expérience Professionnelle</h2>
+
+                    <div class="form-group">
+                        <label>Avez-vous une expérience en téléprospection/télémarketing ? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="exp-oui" name="experience" value="oui" required>
+                                <label for="exp-oui">Oui</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="exp-non" name="experience" value="non">
+                                <label for="exp-non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annees-experience">Nombre d'années d'expérience en téléprospection <span class="required">*</span></label>
+                        <select id="annees-experience" name="annees-experience" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="debutant">Débutant (moins de 6 mois)</option>
+                            <option value="0-1">6 mois à 1 an</option>
+                            <option value="1-3">1 à 3 ans</option>
+                            <option value="3-5">3 à 5 ans</option>
+                            <option value="5+">Plus de 5 ans</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="secteurs">Dans quel(s) secteur(s) avez-vous travaillé ? (Cochez toutes les réponses qui s'appliquent)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="secteur-energie" name="secteurs" value="energie">
+                                <label for="secteur-energie">Énergies renouvelables / Énergie</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="secteur-telecom" name="secteurs" value="telecom">
+                                <label for="secteur-telecom">Télécommunications</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="secteur-banque" name="secteurs" value="banque">
+                                <label for="secteur-banque">Banque / Assurance</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="secteur-immobilier" name="secteurs" value="immobilier">
+                                <label for="secteur-immobilier">Immobilier</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="secteur-autre" name="secteurs" value="autre">
+                                <label for="secteur-autre">Autre</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="volume-appels">Quel volume d'appels gérez-vous habituellement par jour ? <span class="required">*</span></label>
+                        <select id="volume-appels" name="volume-appels" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="0-30">0 à 30 appels</option>
+                            <option value="30-50">30 à 50 appels</option>
+                            <option value="50-80">50 à 80 appels</option>
+                            <option value="80-100">80 à 100 appels</option>
+                            <option value="100+">Plus de 100 appels</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 3: Connaissances Énergies Renouvelables -->
+                <div class="section">
+                    <h2 class="section-title">Connaissances - Énergies Renouvelables</h2>
+
+                    <div class="form-group">
+                        <label>Quel est votre niveau de connaissance des énergies renouvelables ? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="connaissance-debutant" name="connaissance" value="debutant" required>
+                                <label for="connaissance-debutant">Débutant - Peu ou pas de connaissances</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="connaissance-intermediaire" name="connaissance" value="intermediaire">
+                                <label for="connaissance-intermediaire">Intermédiaire - Connaissances de base</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="connaissance-avance" name="connaissance" value="avance">
+                                <label for="connaissance-avance">Avancé - Bonnes connaissances du secteur</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="connaissance-expert" name="connaissance" value="expert">
+                                <label for="connaissance-expert">Expert - Excellente maîtrise du secteur</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="solutions-connues">Quelles solutions d'énergies renouvelables connaissez-vous ? (Cochez toutes les réponses qui s'appliquent)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-photovoltaique" name="solutions" value="photovoltaique">
+                                <label for="sol-photovoltaique">Panneaux photovoltaïques / Solaire</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-pompe" name="solutions" value="pompe">
+                                <label for="sol-pompe">Pompes à chaleur</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-isolation" name="solutions" value="isolation">
+                                <label for="sol-isolation">Isolation thermique</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-eolien" name="solutions" value="eolien">
+                                <label for="sol-eolien">Éolien</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-chauffe-eau" name="solutions" value="chauffe-eau">
+                                <label for="sol-chauffe-eau">Chauffe-eau solaire</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="sol-autre-energie" name="solutions" value="autre">
+                                <label for="sol-autre-energie">Autre</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aides-connues">Connaissez-vous les aides et subventions pour les énergies renouvelables ? (MaPrimeRénov', CEE, etc.)</label>
+                        <select id="aides-connues" name="aides-connues">
+                            <option value="">Sélectionnez...</option>
+                            <option value="non">Non, pas du tout</option>
+                            <option value="peu">Oui, quelques notions</option>
+                            <option value="bien">Oui, je les connais bien</option>
+                            <option value="expert">Oui, je maîtrise parfaitement</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 4: Compétences et Soft Skills -->
+                <div class="section">
+                    <h2 class="section-title">Compétences et Qualités</h2>
+
+                    <div class="form-group">
+                        <label>Auto-évaluation de vos compétences <span class="required">*</span></label>
+                        <p style="font-size: 13px; color: #7f8c8d; margin-bottom: 15px;">Notez vos compétences de 1 (faible) à 5 (excellent)</p>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="margin-bottom: 10px;">Communication orale</label>
+                            <div class="scale-group">
+                                <div class="scale-option">
+                                    <input type="radio" id="comm-1" name="communication" value="1" required>
+                                    <label for="comm-1">1</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="comm-2" name="communication" value="2">
+                                    <label for="comm-2">2</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="comm-3" name="communication" value="3">
+                                    <label for="comm-3">3</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="comm-4" name="communication" value="4">
+                                    <label for="comm-4">4</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="comm-5" name="communication" value="5">
+                                    <label for="comm-5">5</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="margin-bottom: 10px;">Gestion des objections</label>
+                            <div class="scale-group">
+                                <div class="scale-option">
+                                    <input type="radio" id="objection-1" name="objections" value="1" required>
+                                    <label for="objection-1">1</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="objection-2" name="objections" value="2">
+                                    <label for="objection-2">2</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="objection-3" name="objections" value="3">
+                                    <label for="objection-3">3</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="objection-4" name="objections" value="4">
+                                    <label for="objection-4">4</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="objection-5" name="objections" value="5">
+                                    <label for="objection-5">5</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="margin-bottom: 10px;">Persévérance / Résistance au refus</label>
+                            <div class="scale-group">
+                                <div class="scale-option">
+                                    <input type="radio" id="perseverance-1" name="perseverance" value="1" required>
+                                    <label for="perseverance-1">1</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="perseverance-2" name="perseverance" value="2">
+                                    <label for="perseverance-2">2</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="perseverance-3" name="perseverance" value="3">
+                                    <label for="perseverance-3">3</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="perseverance-4" name="perseverance" value="4">
+                                    <label for="perseverance-4">4</label>
+                                </div>
+                                <div class="scale-option">
+                                    <input type="radio" id="perseverance-5" name="perseverance" value="5">
+                                    <label for="perseverance-5">5</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logiciels">Maîtrisez-vous des logiciels CRM ou de gestion d'appels ?</label>
+                        <select id="logiciels" name="logiciels">
+                            <option value="">Sélectionnez...</option>
+                            <option value="non">Non</option>
+                            <option value="basique">Oui, niveau basique</option>
+                            <option value="intermediaire">Oui, niveau intermédiaire</option>
+                            <option value="avance">Oui, niveau avancé</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logiciels-detail">Si oui, lesquels ? (Salesforce, HubSpot, Zoho, etc.)</label>
+                        <input type="text" id="logiciels-detail" name="logiciels-detail" placeholder="Ex: Salesforce, HubSpot...">
+                    </div>
+                </div>
+
+                <!-- Section 5: Disponibilité et Modalités -->
+                <div class="section">
+                    <h2 class="section-title">Disponibilité et Modalités</h2>
+
+                    <div class="form-group">
+                        <label for="disponibilite">Quelle est votre disponibilité ? <span class="required">*</span></label>
+                        <select id="disponibilite" name="disponibilite" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="immediate">Immédiate</option>
+                            <option value="1-semaine">Sous 1 semaine</option>
+                            <option value="2-semaines">Sous 2 semaines</option>
+                            <option value="1-mois">Sous 1 mois</option>
+                            <option value="negocier">À négocier</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Type de contrat recherché <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="contrat-cdi" name="contrat" value="cdi" required>
+                                <label for="contrat-cdi">CDI</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="contrat-cdd" name="contrat" value="cdd">
+                                <label for="contrat-cdd">CDD</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="contrat-interim" name="contrat" value="interim">
+                                <label for="contrat-interim">Intérim</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="contrat-freelance" name="contrat" value="freelance">
+                                <label for="contrat-freelance">Freelance / Indépendant</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Préférence de travail <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="lieu-presentiel" name="lieu" value="presentiel" required>
+                                <label for="lieu-presentiel">Présentiel uniquement</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="lieu-teletravail" name="lieu" value="teletravail">
+                                <label for="lieu-teletravail">Télétravail uniquement</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="lieu-hybride" name="lieu" value="hybride">
+                                <label for="lieu-hybride">Hybride (présentiel + télétravail)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label for="horaires">Horaires préférés <span class="required">*</span></label>
+                            <select id="horaires" name="horaires" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="temps-plein">Temps plein (35h+)</option>
+                                <option value="temps-partiel">Temps partiel</option>
+                                <option value="matin">Matinées uniquement</option>
+                                <option value="apres-midi">Après-midis uniquement</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="salaire">Prétentions salariales (brut mensuel) <span class="required">*</span></label>
+                            <select id="salaire" name="salaire" required>
+                                <option value="">Sélectionnez...</option>
+                                <option value="1500-1800">1 500 € - 1 800 €</option>
+                                <option value="1800-2200">1 800 € - 2 200 €</option>
+                                <option value="2200-2500">2 200 € - 2 500 €</option>
+                                <option value="2500-3000">2 500 € - 3 000 €</option>
+                                <option value="3000+">Plus de 3 000 €</option>
+                                <option value="negocier">À négocier</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Motivation -->
+                <div class="section">
+                    <h2 class="section-title">Motivation et Projet Professionnel</h2>
+
+                    <div class="form-group">
+                        <label for="motivation">Pourquoi souhaitez-vous travailler comme téléprospecteur dans les énergies renouvelables ? <span class="required">*</span></label>
+                        <textarea id="motivation" name="motivation" required placeholder="Décrivez vos motivations en quelques lignes..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="objectifs">Quels sont vos objectifs professionnels à court et moyen terme ?</label>
+                        <textarea id="objectifs" name="objectifs" placeholder="Vos ambitions professionnelles..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cv">Lien vers votre CV (Google Drive, Dropbox, LinkedIn, etc.)</label>
+                        <input type="text" id="cv" name="cv" placeholder="https://...">
+                    </div>
+                </div>
+
+                <!-- Section 7: Informations Complémentaires -->
+                <div class="section">
+                    <h2 class="section-title">Informations Complémentaires</h2>
+
+                    <div class="form-group">
+                        <label for="comment-connu">Comment avez-vous connu notre agence ? <span class="required">*</span></label>
+                        <select id="comment-connu" name="comment-connu" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="site-web">Site web</option>
+                            <option value="reseaux-sociaux">Réseaux sociaux</option>
+                            <option value="pole-emploi">Pôle Emploi</option>
+                            <option value="indeed">Indeed</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="recommandation">Recommandation</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commentaires">Commentaires ou informations supplémentaires</label>
+                        <textarea id="commentaires" name="commentaires" placeholder="Ajoutez toute information que vous jugez pertinente..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="rgpd" name="rgpd" required>
+                            <label for="rgpd">J'accepte que mes données personnelles soient traitées dans le cadre de ma candidature conformément au RGPD <span class="required">*</span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">Envoyer ma candidature</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('qualificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collecte des données du formulaire
+            const formData = new FormData(this);
+            const data = {};
+
+            // Conversion des données
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (!Array.isArray(data[key])) {
+                        data[key] = [data[key]];
+                    }
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Affichage des données dans la console (à remplacer par un envoi vers votre serveur)
+            console.log('Données du formulaire:', data);
+
+            // Message de confirmation
+            alert('✅ Votre candidature a été envoyée avec succès ! Nous reviendrons vers vous dans les plus brefs délais.');
+
+            // Réinitialisation du formulaire
+            this.reset();
+
+            // ICI : Intégrez votre logique d'envoi vers votre backend/CRM
+            // Exemple :
+            // fetch('/api/candidatures', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+        });
+    </script>
+</body>
+</html>
