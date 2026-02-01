@@ -97,16 +97,21 @@ Le projet utilise SQLite par défaut. Le modèle de données comprend :
 
 ## Déploiement sur Vercel
 
-L'application est configurée pour un déploiement automatique sur Vercel :
+L'application est déployée sur Vercel et accessible via :
+- **URL principale** : https://recruit-lime.vercel.app
+- **URL alternative** : https://recruit-1pkejzkcr-mathysbarrie-gmailcoms-projects.vercel.app
 
+Les déploiements sont automatiques via GitHub. Chaque push sur `main` déclenche un nouveau déploiement.
+
+Pour déployer manuellement :
 ```bash
 vercel --prod
 ```
 
-Pour la production, pensez à :
-1. Configurer une base de données PostgreSQL ou MySQL
-2. Ajouter les variables d'environnement dans Vercel
-3. Mettre en place l'authentification pour le back office
+⚠️ **IMPORTANT** : Pour la production, vous devez :
+1. Configurer une base de données PostgreSQL (voir PRODUCTION.md)
+2. Ajouter la variable d'environnement `DATABASE_URL` dans Vercel
+3. Mettre en place l'authentification pour le back office `/admin`
 
 ## Scripts disponibles
 

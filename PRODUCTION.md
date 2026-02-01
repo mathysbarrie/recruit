@@ -6,8 +6,9 @@ L'application est déployée sur Vercel mais utilise SQLite qui **ne fonctionne 
 
 ## URLs actuelles
 
-- **Production** : https://formulaire-qualification-recrutemen.vercel.app
-- **Alternative** : https://formulaire-qualification-recrutement-csxjlqjha.vercel.app
+- **Production** : https://recruit-lime.vercel.app
+- **Alternative** : https://recruit-1pkejzkcr-mathysbarrie-gmailcoms-projects.vercel.app
+- **Dashboard Vercel** : https://vercel.com/mathysbarrie-gmailcoms-projects/recruit
 
 ## ⚠️ IMPORTANT : Configuration de la base de données pour la production
 
