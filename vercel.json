@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "formulaire-qualification-recrutement",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/formulaire-qualification.html"
+    }
+  ]
+}
